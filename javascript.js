@@ -88,10 +88,10 @@ adjetivos.sort((a,b) => b.tipo.localeCompare(a.tipo));
 
 console.log(adjetivos)
 
-// Definição das cores disponíveis no jogo
+// KITTY CARDS
 const cores = ["Vermelho", "Azul", "Verde", "Amarelo"];
 
-// Gerar todas as cartas possíveis (1 a 6 em cada cor)
+
 const cartasKittyCards = [];
 for (let cor of cores) {
     for (let numero = 1; numero <= 6; numero++) {
@@ -99,25 +99,50 @@ for (let cor of cores) {
     }
 }
 
-// Função para embaralhar as cartas usando Fisher-Yates Shuffle
+// Fisher-Yates Shuffle
 function embaralharCartas(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]]; // Troca os elementos
+        [array[i], array[j]] = [array[j], array[i]];
     }
 }
 
-// Função para puxar uma carta
 function puxarCarta() {
     if (cartasKittyCards.length === 0) {
         console.log("Não há mais cartas disponíveis!");
         return;
     }
     
-    embaralharCartas(cartasKittyCards); // Embaralha antes de puxar
-    const cartaPuxada = cartasKittyCards.pop(); // Remove a última carta
+    embaralharCartas(cartasKittyCards); 
+    const cartaPuxada = cartasKittyCards.pop(); 
     console.log(`🎴 Você puxou: ${cartaPuxada}!`);
 }
 
-// Exemplo de uso:
-puxarCarta(); // Rode essa função no console para puxar uma carta aleatória
+puxarCarta(); 
+
+
+function func1(callback) {
+  setTimeout(() => {
+    console.log("Task 1");
+    callback()
+  },  3000);
+}
+
+function func2(){
+  console.log("Task 2")
+  console.log("Task 3")
+  console.log("Task 4")
+}
+
+func1(func2);
+
+
+saudacao(); // ✅ Funciona mesmo antes da declaração = Hoisting
+
+function saudacao() {
+    console.log("Oiê!");
+}
+
+// Esse hoisting acontece por causa do nome function / pq é uma função normal
+
+
